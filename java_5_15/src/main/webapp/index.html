@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+  <meta charset="UTF-8">
+  <title>从前端发起请求，请求JSON数据</title>
+</head>
+<body>
+  <script>
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/message-list.json");
+    xhr.addEventListener("load", function () {
+      console.log(this.responseText);
+      //从json数据从String解析成数组/对象，方便以后操作
+      var messageList = JSON.parse(this.responseText);
+      console.log(messageList);
+    });
+    xhr.send();
+  </script>
+</body>
+</html>

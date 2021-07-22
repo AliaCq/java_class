@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+  <meta charset="UTF-8">
+  <title>文章列表页</title>
+</head>
+<body>
+  <ol>
+    <li th:each="article : ${articleList}">
+      <div>
+        <a th:href="'/detail?id=' + ${article.id}" th:text="${article.title}" href="/detail?id=...">替换成标题</a>
+        <a th:href="'/user?id=' + ${article.authorId}" href="/user?id=...">
+          <span th:text="${article.authorName}">替换成作者用户名</span>
+          <img th:src="${article.authorAvatar}" src="用户头像url">
+        </a>
+        <p th:text="${article.contentBrief}">内容简介</p>
+        <span th:text="${article.viewCount}">替换成观看数量</span>
+        <span th:text="${article.likeCount}">替换成点赞数量</span>c
+        <span th:text="${article.commentCount}">替换成评论数量</span>
+      </div>k
+    </li>
+  </ol>
+</body>
+</html>

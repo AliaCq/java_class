@@ -1,0 +1,132 @@
+1.
+    function h(){
+        var body = document.querySelector("body");
+        var h = document.createElement("h");
+        h.innerText = "qwertyuiop";
+        body.appendChild(h);
+    }
+    function a(){
+        var body = document.querySelector("body");
+        var a = document.createElement("a");
+        a.innerText = "跳转网页";
+        a.target = "_blank";
+        a.href = "https://www.hao123.com";
+        body.appendChild(a);
+    }
+    setTimeout(h,3000);
+    setTimeout(a,9000);
+
+
+2.
+        var body = document.querySelector("body");
+        var button = document.createElement("button");
+        button.innerText = "点击";
+        body.appendChild(button);
+
+        function h(){
+        var h = document.createElement("h");
+        h.innerText = "CQ3010";
+        body.appendChild(h);
+        }
+        button.onclick = h;
+
+3.
+        var body = document.querySelector("body");
+        body.style = "width: 100vw; height: 100vh";
+
+        var y;
+        function addBall(e) {
+            console.log(e);
+            var ball = document.createElement("div");
+            y = e.offsetY;
+            var s1 = "left: " + e.offsetX + "px";
+            var s2 = "top: " + y + "px";
+            var s3 = "position: absolute; width: 40px; height: 40px; border-radius: 50%; background-color: grey";
+            var style = s1 + "; " + s2 + "; " + s3;
+            ball.style = style;
+            body.appendChild(ball);
+
+            function fall() {
+            console.log("fall");
+            y += 1;
+            s2 = "top: " + y + "px";
+            style = s1 + "; " + s2 + "; " + s3;
+            ball.style = style;
+            }
+            var t = 2/y;
+            setInterval(fall, t);
+        }
+    body.onclick = addBall;
+    }
+4.
+    function onsuccesss(){
+      console.log("成功");
+    }
+    var xhr = new XMLHttpRequest();
+    xhr.open("get","/");
+    xhr.addEventListener("load",onsuccesss);
+    xhr.send();
+
+    function onsuccesss(){
+          var messages = JSON.parse(xhr.responseText);
+          console.log(messages);
+          console.log(messages[0].who);
+     }
+        var xhr = new XMLHttpRequest();
+        xhr.open("get","/message.json");
+        xhr.addEventListener("load",onsuccesss);
+        xhr.send();
+5.
+    function onsuccesss(){
+          var messages = JSON.parse(xhr.responseText);
+          console.log(messages);
+     }
+        var xhr = new XMLHttpRequest();
+        xhr.open("get","/message.json");
+        xhr.addEventListener("load",onsuccesss);
+        xhr.send();
+
+6.
+    //1.创建table
+    var tbody;
+    function createTable() {
+    var body = document.querySelector(body);
+    var table = document.createElement("table");
+    tbody = document.createElement("tbody");
+    table.appendChild(tbody);
+    body.appendChild(table);
+    }
+    createTable();
+    //2.将message添加到td中
+    function addRow(message) {
+        var tr = document.createElement("tr");
+        var td1 = document.createElement("td");
+        td1.innerText = message.who;
+
+        var td2 = document.createElement("td");
+        td2.innerText = message.target;
+
+        var td3 = document.createElement("td");
+        td3.innerText = message.what;
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tbody.appendChild(tr);
+        }
+
+     //3.将遍历messageList 得到message
+       function getMessage(messageList) {
+           for(var message of messageList){
+                addRow(message);
+           }
+       }
+
+      //4.
+      function onsuccesss(){
+            var messageList = JSON.parse(xhr.responseText);
+            getMessage(messageList);
+      }
+      var xhr = new XMLHttpRequest();
+      xhr.open("get","/message.json");
+      xhr.addEventListener("load",onsuccesss);
+      xhr.send();

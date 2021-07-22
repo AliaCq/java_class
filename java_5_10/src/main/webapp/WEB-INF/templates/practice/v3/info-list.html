@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+  <meta charset="UTF-8">
+  <title>消息 v3</title>
+</head>
+<body>
+  <h1>消息 v3</h1>
+  <table>
+    <tr th:each="info : ${infoList}">
+      <td th:text="${info.name}"></td>
+      <td th:text="${info.gender}"></td>
+    </tr>
+  </table>
+</body>
+</html>
