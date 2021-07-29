@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --margin: 140px;
+}
+
+html, body {
+    height: 100vh;
+}
+
+header {
+    padding-left: var(--margin);
+    padding-right: var(--margin);
+    height: 70px;
+    background-color: aqua;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main {
+    margin-left: var(--margin);
+    margin-right: var(--margin);
+}
+
+main ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.album-item {
+    width: 210px;
+    height: 380px;
+    overflow: hidden;
+}
+
+.album-item a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.album-item img {
+    width: 210px;
+    height: 280px;
+    object-fit: cover;
+}

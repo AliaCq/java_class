@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>听书 | 新建专辑</title>
+</head>
+<body>
+ <main>
+   <form method="post" action="/new-album" enctype="multipart/form-data">
+     <div>
+         <label for="name">专辑名称</label>
+             <input type="text" id="name" name="name">
+     </div>
+       <div>
+           <label for="brief">专辑描述</label>
+               <textarea id="brief" name="brief"></textarea>
+       </div>
+       <div>
+           <label for="cover">专辑封面</label>
+               <input type="file" id="cover" name="cover">
+       </div>
+       <div>
+           <label for="header">专辑底图</label>
+               <input type="file" id="header" name="header">
+       </div>
+       <div>
+           <button type="submit">保存</button>
+       </div>
+   </form>
+ </main>
+ <script src="/js/util.js"></script>
+<script>
+    window.onload = function () {
+        ajax("get","/api/current-user.json",function (result) {
+            if (!result.logged){
+            alert("必须先进行登录");
+            window.location = "/login.html";
+            }
+        })
+    }
+</script>
+</body>
+</html>
